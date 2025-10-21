@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = "Feedback API backend built with FastAPI and MongoDB"
+authors = ["gladsonk <gladsonkkoshy@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "app" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.119.1"
+uvicorn = "^0.38.0"
+motor = "^3.7.1"
+python-dotenv = "^1.1.1"
+pydantic = "^2.12.3"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.4.2"
+httpx = "^0.28.1"
+
+[tool.poetry.scripts]
+start = "run:main"
+test = "pytest:main"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

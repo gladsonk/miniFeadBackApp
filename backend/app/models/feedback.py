@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import Optional
 import re
 
-class feedbackCreate(BaseModel):
+class FeedbackCreate(BaseModel):
     name: str = Field(..., min_length=2, max_length=50)
     email: Optional[str] = Field(None, max_length=254)
     message: str = Field(..., min_length=5, max_length=500)
@@ -38,7 +38,7 @@ class FeedbackResponse(BaseModel):
     name: str
     email: str
     rating: int
-    comment: str
+    message: str
     created_at: datetime
 
     model_config = ConfigDict(from_attributes=True)

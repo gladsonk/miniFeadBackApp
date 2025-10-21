@@ -26,8 +26,7 @@ class FeedbackService:
     
     async def get_all(self) -> list[FeedbackResponse]:
         """Retrieve all feedback entries from the database"""
-        # await the find coroutine to obtain the cursor, then apply sort
-        cursor = await self.collection.find()
+        cursor = self.collection.find()
         feedback_list = await cursor.to_list(length=None)
         return [
             FeedbackResponse(

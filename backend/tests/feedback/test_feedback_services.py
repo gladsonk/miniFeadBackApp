@@ -57,7 +57,7 @@ def test_get_all_feedback_retrun_all(feedback_service, mock_db):
 
     mock_cursor = MagicMock()
     mock_cursor.to_list = AsyncMock(return_value=sample_feedbacks)
-    mock_db.feedback.find = AsyncMock(return_value=mock_cursor)
+    mock_db.feedback.find = MagicMock(return_value=mock_cursor)
 
     results = asyncio.run(feedback_service.get_all())
 
@@ -71,7 +71,7 @@ def test_get_all_feedback_returns_empty_list_when_no_data(feedback_service, mock
 
     mock_cursor = MagicMock()
     mock_cursor.to_list = AsyncMock(return_value=[])
-    mock_db.feedback.find = AsyncMock(return_value=mock_cursor)
+    mock_db.feedback.find = MagicMock(return_value=mock_cursor)
 
     result = asyncio.run(feedback_service.get_all())
     assert result == []

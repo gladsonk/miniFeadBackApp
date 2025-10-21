@@ -1,9 +1,9 @@
 import os
 from pydantic_settings import BaseSettings
+from pydantic import ConfigDict
 from dotenv import load_dotenv
 
 load_dotenv()
-
 
 class Settings(BaseSettings):
     # Application config
@@ -17,9 +17,10 @@ class Settings(BaseSettings):
     MONGO_URL: str = os.getenv("MONGO_URL")
     DB_NAME: str = os.getenv("DB_NAME")
 
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
+    model_config = ConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+    )
 
 # Initialize global settings instance
 settings = Settings()
